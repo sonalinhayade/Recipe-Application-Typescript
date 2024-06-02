@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // Define an interface representing your Ingredient
 interface Ingredient {
@@ -10,7 +11,7 @@ interface Ingredient {
 // Define an interface representing your Redux state
 export interface RootState {
   ingredients: {
-    ingredients: Ingredient[];
+    ingredients: Ingredient[]; //error
     loading: boolean;
     error: string | null;
   };
