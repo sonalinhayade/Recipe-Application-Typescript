@@ -5,6 +5,7 @@ import store from "./redux/store";
 import IngredientSearchForm from "./components/IngredientSearchForm";
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
+import NoRecipeFound from "./components/NoRecipeFound";
 import "./App.css";
 
 const App = () => (
@@ -15,6 +16,7 @@ const App = () => (
           <Route path="/" element={<IngredientSearchForm />} />
           <Route path="/recipes" element={<RecipeList />} />
           <Route path="/recipe/:id" element={<RecipeDetails />} />
+          <Route path="/no-recipe" element={<NoRecipeFound />} />
         </Routes>
       </div>
     </Router>

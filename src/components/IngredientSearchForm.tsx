@@ -11,9 +11,11 @@ import "../App.css";
 import Breadcrumbs from "./Breadcrumbs";
 
 const IngredientSearchForm: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch(); 
+  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  const ingredients = useSelector((state: RootState) => state.ingredients.ingredients);
+  const ingredients = useSelector(
+    (state: RootState) => state.ingredients.ingredients
+  );
   const loading = useSelector((state: RootState) => state.ingredients.loading);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLetter, setSelectedLetter] = useState("A");
@@ -32,7 +34,7 @@ const IngredientSearchForm: React.FC = () => {
     e.preventDefault();
     navigateToRecipes(searchTerm);
   };
-  
+
   const navigateToRecipes = (term: string) => {
     if (!ingredients) {
       navigate(`/no-recipe`);
@@ -65,11 +67,14 @@ const IngredientSearchForm: React.FC = () => {
   };
 
   const getHighlightedText = (text: string, highlight: string): JSX.Element => {
-    const parts: (string | JSX.Element)[] = text.split(new RegExp(`(${highlight})`, "gi"));
+    const parts: (string | JSX.Element)[] = text.split(
+      new RegExp(`(${highlight})`, "gi")
+    );
     return (
       <span>
         {parts.map((part: string | JSX.Element, i: number) =>
-          typeof part === "string" && part.toLowerCase() === highlight.toLowerCase() ? (
+          typeof part === "string" &&
+          part.toLowerCase() === highlight.toLowerCase() ? (
             <b key={i} className="highlight">
               {part}
             </b>
@@ -81,7 +86,7 @@ const IngredientSearchForm: React.FC = () => {
     );
   };
 
-  const scrollContainerRef = useRef<HTMLDivElement>(null); 
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: string) => {
     const { current } = scrollContainerRef;
@@ -89,16 +94,16 @@ const IngredientSearchForm: React.FC = () => {
       const scrollAmount = current.offsetWidth;
       current.scrollBy({
         top: 0,
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
       });
     }
   };
 
   if (!ingredients) {
-    return null; // Or handle the loading state appropriately
+    return null;
   }
-  
+
   const filteredIngredients = ingredients.filter((ingredient) =>
     searchTerm
       ? ingredient.strIngredient
@@ -115,9 +120,9 @@ const IngredientSearchForm: React.FC = () => {
         <div className="left">
           <h1 className="title">Recipix</h1>
         </div>
-        <Breadcrumbs/>
+        <Breadcrumbs />
       </header>
-     
+
       <div className="card-container">
         <div className="card">
           <div className="card-half card-text">
@@ -150,27 +155,15 @@ const IngredientSearchForm: React.FC = () => {
               </div>
             </div>
             <div className="button-container">
-              <button className="explore-button">Explore Recipes</button>
+              <a
+                href="https://www.themealdb.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="explore-button"
+              >
+                Explore Recipes
+              </a>
             </div>
-            {/* <div>
-          <ul className="social-icons">
-            <li>
-              <a href="https://www.facebook.com/food.com/">
-                <i className="fab fa-facebook"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/Insharamin/status/1501807738808160263">
-                <i className="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/foodie.database/">
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
-        </div> */}
           </div>
           <div className="card-half card-image">
             <img src={secondImage} alt="Placeholder" />
