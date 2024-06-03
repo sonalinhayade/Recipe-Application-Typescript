@@ -8,6 +8,7 @@ import { useMediaQuery } from "react-responsive";
 import secondImage from "../Images/second-image.jpg";
 import { RootState, AppDispatch } from "../redux/store";
 import "../App.css";
+import Breadcrumbs from "./Breadcrumbs";
 
 const IngredientSearchForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch(); 
@@ -114,26 +115,9 @@ const IngredientSearchForm: React.FC = () => {
         <div className="left">
           <h1 className="title">Recipix</h1>
         </div>
-        <div>
-          <ul className="social-icons">
-            <li>
-              <a href="https://www.facebook.com/food.com/">
-                <i className="fab fa-facebook"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/Insharamin/status/1501807738808160263">
-                <i className="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/foodie.database/">
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <Breadcrumbs/>
       </header>
+     
       <div className="card-container">
         <div className="card">
           <div className="card-half card-text">
@@ -168,6 +152,25 @@ const IngredientSearchForm: React.FC = () => {
             <div className="button-container">
               <button className="explore-button">Explore Recipes</button>
             </div>
+            {/* <div>
+          <ul className="social-icons">
+            <li>
+              <a href="https://www.facebook.com/food.com/">
+                <i className="fab fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/Insharamin/status/1501807738808160263">
+                <i className="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/foodie.database/">
+                <i className="fab fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div> */}
           </div>
           <div className="card-half card-image">
             <img src={secondImage} alt="Placeholder" />

@@ -5,9 +5,11 @@ import { fetchRecipeDetails } from "../redux/slices/RecipeDetailsSlice";
 import { GiCheckMark } from "react-icons/gi";
 import { IoLogoYoutube } from "react-icons/io";
 import { RootState, useAppDispatch } from "../redux/store";
+import Breadcrumbs from "./Breadcrumbs";
 
 const RecipeDetails:React.FC = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
+  // const { id } = useParams();
   const dispatch = useAppDispatch();
   const meal = useSelector(
     (state: RootState) => state.recipeDetails.selectedRecipe
@@ -18,11 +20,7 @@ const RecipeDetails:React.FC = () => {
 
   const [showVideo, setShowVideo] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch(fetchRecipeDetails(id));
-  // }, [dispatch, id]);
 
-  // Inside your component
   useEffect(() => {
     if (id) {
       dispatch(fetchRecipeDetails(id));
@@ -51,6 +49,9 @@ const RecipeDetails:React.FC = () => {
     <>
       <div className="title-details-list">
         <h1>MEAL DETAILS</h1>
+        <div style={{textDecoration: 'none'}} >
+        <Breadcrumbs/>
+        </div>
       </div>
       <div className="recipe-details-container">
         <div className="recipe-card">
@@ -72,7 +73,6 @@ const RecipeDetails:React.FC = () => {
                     rel="noopener noreferrer"
                   >
                     <IoLogoYoutube className="youtube-icon" />
-                    Cook With Us!
                   </a>
                 </p>
                 {showVideo && (
@@ -91,7 +91,7 @@ const RecipeDetails:React.FC = () => {
           </div>
         </div>
         <div className="recipe-ingredients-card">
-          <h3>Ingredients</h3>
+          <h3 className="ingredient-text">Ingredients</h3>
           <ul className="ingredient-list-details ingredient-container">
             {Object.keys(meal)
               .filter((key) => key.startsWith("strIngredient") && meal[key])

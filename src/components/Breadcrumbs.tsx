@@ -1,52 +1,42 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Breadcrumb } from 'react-bootstrap';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const Breadcrumbs = () => {
+const Breadcrumbs: React.FC = () => {
   const location = useLocation();
-
+  const navigate = useNavigate();
   const pathnames = location.pathname.split('/').filter((x) => x);
-  let currentLink = '';
+  const breadcrumbs = [{ title: 'Home', link: '/' }];
 
-  const crumbs = pathnames.map((name, index) => {
-    currentLink += `/${name}`;
-    const isLast = index === pathnames.length - 1;
-    const readableName = name.replace(/-/g, ' ');
+  if (pathnames.length > 0) {
+    breadcrumbs.push({ title: 'Recipe List', link: '/recipes' });
+  }
 
-    if (name === "recipe") {
-      // If on a recipe page, show "Recipe Details" instead of ID
-      return (
-        <div className="crumb" key={index}>
-          <Link to="/recipes">Recipe List</Link>
-        </div>
-      );
-    } else if (name === "details") {
-      // If on recipe details page, show "Recipe Details"
-      return (
-        <div className="crumb" key={index}>
-          <span>Recipe Details</span>
-        </div>
-      );
+  if (pathnames.length > 1) {
+    breadcrumbs.push({ title: 'Recipe Details', link: `/${pathnames.slice(0, 2).join('/')}` });
+  }
+
+  const handleNavigate = (link: string) => {
+    if (link === '/recipes' && pathnames.length > 1) {
+      navigate(-1); 
     } else {
-      return (
-        <div className="crumb" key={index}>
-          {isLast ? (
-            <span>{readableName}</span>
-          ) : (
-            <Link to={currentLink}>{readableName}</Link>
-          )}
-        </div>
-      );
+      navigate(link); 
     }
-  });
+  };
 
   return (
-    <div className="breadcrumbs">
-      <div className="crumb">
-        <Link to="/">Home</Link>
-      </div>
-      {/* If on recipe list page, do not display last breadcrumb */}
-      {pathnames[pathnames.length - 1] !== "recipe" && crumbs}
-    </div>
+    <Breadcrumb className="custom-breadcrumb">
+      {breadcrumbs.map((breadcrumb, index) => (
+        <Breadcrumb.Item 
+          key={index} 
+          active={index === breadcrumbs.length - 1}
+          className="custom-breadcrumb-item"
+          onClick={() => handleNavigate(breadcrumb.link)}
+        >
+          {breadcrumb.title}
+        </Breadcrumb.Item>
+      ))}
+    </Breadcrumb>
   );
 };
 

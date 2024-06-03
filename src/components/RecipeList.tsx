@@ -6,16 +6,16 @@ import { FaSearch } from "react-icons/fa";
 import { Form, Button } from "react-bootstrap";
 import "../App.css";
 import { RootState, useAppDispatch } from "../redux/store";
+import Breadcrumbs from "./Breadcrumbs";
 
-
-const RecipeList:React.FC = () => {
+const RecipeList: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const recipes = useSelector((state:RootState) => state.recipes.recipes);
-  const loading = useSelector((state:RootState) => state.recipes.loading);
-  const error = useSelector((state:RootState) => state.recipes.error);
+  const recipes = useSelector((state: RootState) => state.recipes.recipes);
+  const loading = useSelector((state: RootState) => state.recipes.loading);
+  const error = useSelector((state: RootState) => state.recipes.error);
 
   const queryParams = new URLSearchParams(location.search);
   const ingredient = queryParams.get("ingredient");
@@ -31,12 +31,18 @@ const RecipeList:React.FC = () => {
     dispatch(fetchRecipes(searchQuery));
   };
 
-  const handleViewDetails = (id:string) => {
+  const handleViewDetails = (id: string) => {
     navigate(`/recipe/${id}`);
   };
 
   return (
     <>
+      <div className="title-details">
+        <h1>MEALS</h1>
+        <div style={{textDecoration: 'none'}}>
+          <Breadcrumbs />
+        </div>
+      </div>
       <div className="header-list">
         <Form className="search-container" onSubmit={handleSearch}>
           <input
@@ -55,9 +61,7 @@ const RecipeList:React.FC = () => {
           </Button>
         </Form>
       </div>
-      <div className="title-details">
-        <h1>MEALS</h1>
-      </div>
+
       <div className="recipe-list-container">
         {loading && <p>Loading...</p>}
         {error && (
