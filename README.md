@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Recipe Search Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Recipe Search Application is a web application built with ReactJS that allows users to search for recipes based on ingredients. It interacts with an open recipe API to fetch recipe information and provides a user-friendly interface for browsing and selecting recipes.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Search for recipes based on ingredients.
+- Display a list of recipe search results with pagination.
+- View detailed information about a selected recipe, including name, image, ingredients, and instructions.
+- Handle API errors gracefully and display appropriate messages to users.
+- Responsive design for computer, tablet, and mobile devices.
+- State management with Redux.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Requirements
 
-### `npm test`
+1. Create a new ReactJS application using the Create React App method.
+2. Implement a component called IngredientSearchForm for searching ingredients with pagination.
+3. Use the list of ingredients API for fetching ingredients.
+4. Implement a component called RecipeList to render a list of recipe search results based on selected ingredients.
+5. Use the recipe filter API for fetching recipes.
+6. Implement a component called RecipeDetails to display additional information about a selected recipe.
+7. Use the recipe lookup API for fetching recipe details.
+8. Handle API errors and ensure a clean and user-friendly UI.
+9. Make the UI responsive for computer, tablet, and mobile devices.
+10. Use Redux for state management across the application, with local state management used only where necessary.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+To run the Recipe Search Application locally, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/sonalinhayade/Recipe-Application-Typescript.git
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Navigate to the project directory:
+   ```bash
+   cd Recipe-Search-Application
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To start the development server, run:
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[Visit my Recipe Search Application on Vercel](https://recipe-application-typescript.vercel.app/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Technologies Used
 
-## Learn More
+- ReactJS
+- Redux
+- HTML/CSS
+- JavaScript
+- API: [TheMealDB](https://www.themealdb.com/api.php)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions to the Recipe Search Application are welcome! Follow these steps to contribute:
 
-### Code Splitting
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-name`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-name`).
+5. Open a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the [MIT License](LICENSE).
