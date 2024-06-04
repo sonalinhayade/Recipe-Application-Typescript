@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { fetchRecipes } from "../redux/slices/RecipeSlice";
-import { useNavigate, useLocation } from "react-router-dom";
+import {  useLocation, Link } from "react-router-dom"; // Import Link
 import { FaSearch } from "react-icons/fa";
 import { Form, Button } from "react-bootstrap";
 import "../App.css";
@@ -11,7 +11,7 @@ import Breadcrumbs from "./Breadcrumbs";
 const RecipeList: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
   const recipes = useSelector((state: RootState) => state.recipes.recipes);
   const loading = useSelector((state: RootState) => state.recipes.loading);
@@ -31,9 +31,9 @@ const RecipeList: React.FC = () => {
     dispatch(fetchRecipes(searchQuery));
   };
 
-  const handleViewDetails = (id: string) => {
-    navigate(`/recipe/${id}`);
-  };
+  // const handleViewDetails = (id: string) => {
+  //   navigate(`/recipe/${id}`);
+  // };
 
   return (
     <>
@@ -81,20 +81,23 @@ const RecipeList: React.FC = () => {
           <div className="recipe-card-container">
             {recipes.map((recipe) => (
               <div key={recipe.idMeal} className="recipe-list-card">
-                <img
-                  src={recipe.strMealThumb}
-                  alt={recipe.strMeal}
-                  className="recipe-image"
-                />
-                <div className="recipe-details">
+                {/* Wrap the image and recipe name with a Link */}
+                <Link to={`/recipe/${recipe.idMeal}`} className="recipe-link">
+                  <img
+                    src={recipe.strMealThumb}
+                    alt={recipe.strMeal}
+                    className="recipe-image"
+                  />
                   <h3 className="recipe-name">{recipe.strMeal}</h3>
+                </Link>
+                <div className="recipe-details">
                   <p className="recipe-description">{recipe.strDescription}</p>
-                  <button
+                  {/* <button
                     className="view-recipe-button"
                     onClick={() => handleViewDetails(recipe.idMeal)}
                   >
                     View Recipe
-                  </button>
+                  </button> */}
                 </div>
               </div>
             ))}

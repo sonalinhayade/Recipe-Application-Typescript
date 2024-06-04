@@ -304,6 +304,46 @@ const IngredientSearchForm: React.FC = () => {
           )}
         </div>
       </Container>
+      <footer className="footer">
+        <div className="footer-container">
+          <section className="footer-section">
+            <h3>About</h3>
+            <p>
+              TheMealDB was built in 2016 to provide a free data source api for
+              recipes online. TheMealDB originated
+              on the Kodi forums as a way to browse recpies on your TV.
+            </p>
+          </section>
+          <section className="footer-section">
+            <h3>Contact</h3>
+            <p className="cursor">Email: thedatadb@gmail.com</p>
+            <p>Phone: 899-778-3456</p>
+          </section>
+          <section className="footer-section">
+            <h3>Follow Us</h3>
+            <div>
+              <ul className="social-icons">
+                <li>
+                  <a href="https://www.facebook.com/food.com/">
+                    <i className="fab fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/Insharamin/status/1501807738808160263">
+                    <i className="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/foodie.database/">
+                    <i className="fab fa-instagram"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+        <h5 className="copyright">Copyright ©2024 All rights reserved </h5>
+      </footer>
     </>
   );
 };
